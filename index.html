@@ -1888,9 +1888,14 @@
       </button>
 
       <div class="sidebar-bottom">
-        <a href="#" class="sidebar-link-consumer" id="consumer-link" onclick="return openConsumer(event)">
+       <a href="#" class="sidebar-link-consumer" onclick="return openExt(event, 'consumer')">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
           Try the diner app →
+        </a>
+        <a href="#" class="sidebar-link-consumer" onclick="return openExt(event, 'admin')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Ops portal →
+        </a>
         </a>
         <div class="sidebar-user">
           <div class="sidebar-avatar">DM</div>
@@ -3100,11 +3105,13 @@
   }
 
   // Try the diner app link
-  function openConsumer(e) {
+  function openExt(e, which) {
     e.preventDefault();
-    // Update this URL once your consumer app is deployed:
-    const consumerUrl = 'https://mealmate-jet.vercel.app/';
-    window.open(consumerUrl, '_blank');
+    const urls = {
+      consumer: 'https://mealmate-jet.vercel.app',
+      admin: 'https://mealmate-merchant-cq2l.vercel.app'
+    };
+    window.open(urls[which], '_blank');
     return false;
   }
 
